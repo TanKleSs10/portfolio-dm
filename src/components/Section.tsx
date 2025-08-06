@@ -1,27 +1,29 @@
 import { ReactNode } from "react";
+import TitleSection from "./TitleSection";
+import Description from "./Description";
 
 interface SectionProps {
+  id: string;
   sectionName?: string;
   title?: ReactNode | string; // Ahora acepta JSX
   description?: ReactNode | string; // Ahora acepta JSX
   children?: ReactNode;
+  className?: string;
 }
 
 export default function Section({
+  id,
   title,
   children,
   sectionName,
   description,
+  className,
 }: SectionProps) {
   return (
-    <section className="flex flex-col gap-5">
+    <section id={`#${id}`} className={`flex flex-col gap-5 ${className}`}>
       <h3 className="font-unbounded font-bold">{sectionName}</h3>
-      <p className="text-3xl md:text-4xl font-unbounded tracking-wider text-platinum-100">
-        {title}
-      </p>
-      <p className="font-ibmPlex text-base md:text-xl text-platinum-200">
-        {description}
-      </p>
+      <TitleSection>{title}</TitleSection>
+      <Description>{description}</Description>
       <div className="mt-5">{children}</div>
     </section>
   );

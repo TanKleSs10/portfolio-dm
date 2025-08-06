@@ -8,7 +8,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export default function Button({ children, active, ...props }: ButtonProps) {
   return (
     <button
-      className={`border-2 font-semibold ${
+      className={`border-2 font-semibold capitalize ${
         active
           ? "border-brand-folly text-brand-folly"
           : "border-platinum-100 text-platinum-100"

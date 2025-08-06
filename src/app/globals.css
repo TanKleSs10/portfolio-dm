@@ -22,8 +22,20 @@
   --color-brand-folly: #ff4d5a; /* Folly */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-night-900);
   color: var(--color-platinum-100);
   font-family: var(--font-ibmPlex);
+}
+
+.clipPath {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.clipPath:hover {
+  clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 }

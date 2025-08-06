@@ -42,9 +42,9 @@ export default function Input<T extends FieldValues>({
   const inputClass = twMerge(
     clsx(baseStyles, {
       "border-brand-folly": error,
-      "border-cyan-400": !error && inputValue?.length > 0,
+      "border-sky-500": !error && inputValue?.length > 0,
       "border-platinum-200": !error && !inputValue,
-      "focus:border-cyan-400": !error,
+      "focus:border-sky-500": !error,
     }),
   );
 
@@ -53,13 +53,13 @@ export default function Input<T extends FieldValues>({
       "absolute bg-night-900 px-2 top-0 left-0 ms-3 border-x-2 transition-all duration-300",
       {
         "text-brand-folly peer-focus:border-brand-folly": error,
-        "text-cyan-400 border-cyan-400": !error && inputValue?.length > 0,
+        "text-sky-500 border-sky-500": !error && inputValue?.length > 0,
         "border-night-900": !inputValue,
         "-translate-y-4/6": inputValue?.length > 0,
         "translate-y-1/2": !inputValue,
         "peer-focus:-translate-y-4/6": true,
         "peer-focus:text-brand-folly peer-focus:border-brand-folly": error,
-        "peer-focus:text-cyan-400 peer-focus:border-cyan-400": !error,
+        "peer-focus:text-sky-500 peer-focus:border-sky-500": !error,
       },
     ),
   );

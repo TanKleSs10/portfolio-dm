@@ -5,7 +5,7 @@ import Input from "../Input";
 import { messageShema } from "@/schemas/messageSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export default function ContactForm() {
+export default function ContactBody({ locale }: { locale: "es" | "en" }) {
   const {
     watch,
     register,
@@ -22,10 +22,10 @@ export default function ContactForm() {
 
   return (
     <form className="flex flex-col gap-7 mx-auto" onSubmit={handleFormSubmit}>
-      <div className="grid w-full grid-cols-1  md:grid-cols-2 gap-5">
+      <div className="grid w-full grid-cols-1  md:grid-cols-2 gap-7">
         <Input
           as="input"
-          nameField="Nombre"
+          nameField={locale === "es" ? "Nombre" : "Name"}
           watch={watch}
           register={register}
           registerName="name"
@@ -33,7 +33,7 @@ export default function ContactForm() {
         />
         <Input
           as="input"
-          nameField="Apellido"
+          nameField={locale === "es" ? "Apellido" : "Last Name"}
           watch={watch}
           register={register}
           registerName="lastName"
@@ -42,7 +42,7 @@ export default function ContactForm() {
       </div>
       <Input
         as="input"
-        nameField="Correo Electrónico"
+        nameField={locale === "es" ? "Correo Electrónico" : "Email"}
         watch={watch}
         register={register}
         registerName="email"
@@ -51,7 +51,7 @@ export default function ContactForm() {
       />
       <Input
         as="textarea"
-        nameField="Mensaje"
+        nameField={locale === "es" ? "Mensaje" : "Message"}
         watch={watch}
         register={register}
         registerName="message"
@@ -60,8 +60,8 @@ export default function ContactForm() {
 
       <input
         type="submit"
-        value="Enviar Mensaje"
-        className="bg-platinum-300 py-3 text-night-800 font-bold text-lg rounded-lg"
+        value={locale === "es" ? "Enviar Mensaje" : "Send Message"}
+        className="bg-platinum-100 hover:bg-white py-3 text-night-800 font-bold text-lg rounded-lg transition-colors duration-200"
       />
     </form>
   );
