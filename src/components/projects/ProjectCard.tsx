@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SquareArrowOutUpRight, Github, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Tag from "./Tag";
+import Tag from "./ProjectTag";
 import ProjectLink from "./ProjectLink";
 
 export interface ProjectCardProps {
@@ -31,13 +31,11 @@ export default function ProjectCard({
     <>
       {/* Card normal */}
       <motion.article
-        layout
-        layoutId="project-card"
-        className={`w-full h-full group bg-night-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-[1.01] flex flex-col cursor-pointer`}
+        className={`@container w-full h-full group bg-night-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-[1.01] flex flex-col cursor-pointer`}
         onClick={() => setIsOpen(true)}
       >
         <div className="flex items-center justify-between px-4 py-3">
-          <h2 className="text-on-surface-light text-xl font-unbounded font-bold">
+          <h2 className="text-on-surface-light text-sm lg:text-lg font-unbounded font-bold">
             {title}
           </h2>
           <a
@@ -52,14 +50,12 @@ export default function ProjectCard({
           </a>
         </div>
         <picture className="relative w-full aspect-video md:aspect-square lg:aspect-video flex-grow">
-          <motion.div layoutId="project-image">
-            <Image
-              src={image.url}
-              alt={image.alt}
-              fill
-              className="object-cover transition-transform group-hover:scale-105"
-            />
-          </motion.div>
+          <Image
+            src={image.url}
+            alt={image.alt}
+            fill
+            className="object-cover transition-transform group-hover:scale-105"
+          />
         </picture>
       </motion.article>
 
@@ -74,12 +70,11 @@ export default function ProjectCard({
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              layout
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-night-800 rounded-xl shadow-xl overflow-hidden w-[90vw] min-h-[280px] max-w-3xl cursor-default grid"
+              className=" bg-night-800 rounded-xl shadow-xl overflow-hidden w-[90vw] min-h-[280px] max-w-3xl cursor-default grid"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col md:flex-row">

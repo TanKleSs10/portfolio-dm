@@ -20,7 +20,7 @@ export default function Section({
   className,
 }: SectionProps) {
   return (
-    <section id={`#${id}`} className={`flex flex-col gap-5 ${className}`}>
+    <section id={id} className={`flex flex-col gap-5 ${className} scroll-mt-8`}>
       <h3 className="font-unbounded font-bold">{sectionName}</h3>
       <TitleSection>{title}</TitleSection>
       <Description>{description}</Description>

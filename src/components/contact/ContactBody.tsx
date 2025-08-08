@@ -1,23 +1,69 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import Input from "../Input";
-import { messageShema } from "@/schemas/messageSchemas";
+import Input from "../shared/Input";
+import { messageShema, TMessage } from "@/schemas/messageSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { locale } from "@/types";
+import { translateError } from "@/utils";
+import { sendToEmailContact } from "@/actions/sendToEmailContac.action";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
-export default function ContactBody({ locale }: { locale: "es" | "en" }) {
+export default function ContactBody({ locale }: { locale: locale }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     watch,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+    reset,
+  } = useForm<TMessage>({
     resolver: zodResolver(messageShema),
     mode: "onChange",
   });
 
-  const handleFormSubmit = handleSubmit((e) => {
-    alert(`Nombre: ${e.name}`);
+  const handleFormSubmit = handleSubmit(async (e) => {
+    setIsLoading(true);
+    const data = {
+      name: e.name,
+      lastName: e.lastName,
+      email: e.email,
+      message: e.message,
+    };
+
+    const res = messageShema.safeParse(data);
+
+    if (!res.success) {
+      res.error.issues.forEach((issue) => {
+        toast.error(issue.message);
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const response = await sendToEmailContact(res.data, locale);
+
+    if (response?.errors) {
+      if (typeof response.errors === "string") {
+        // error general
+        toast.error(response.errors);
+      } else {
+        // errores de campos
+        for (const [field, message] of Object.entries(response.errors)) {
+          toast.error(`Error en ${field}: ${message}`);
+        }
+      }
+      setIsLoading(false);
+      return;
+    }
+
+    toast.success(
+      `${locale === "es" ? "¡Mensaje enviado correctamente!" : "Message sent successfully!"} `,
+    );
+    setIsLoading(false);
+    reset();
   });
 
   return (
@@ -29,7 +75,7 @@ export default function ContactBody({ locale }: { locale: "es" | "en" }) {
           watch={watch}
           register={register}
           registerName="name"
-          error={errors.name?.message}
+          error={translateError(locale, errors.name?.message as string)}
         />
         <Input
           as="input"
@@ -37,7 +83,7 @@ export default function ContactBody({ locale }: { locale: "es" | "en" }) {
           watch={watch}
           register={register}
           registerName="lastName"
-          error={errors.lastName?.message}
+          error={translateError(locale, errors.lastName?.message as string)}
         />
       </div>
       <Input
@@ -47,7 +93,7 @@ export default function ContactBody({ locale }: { locale: "es" | "en" }) {
         register={register}
         registerName="email"
         type="email"
-        error={errors.email?.message}
+        error={translateError(locale, errors.email?.message as string)}
       />
       <Input
         as="textarea"
@@ -55,13 +101,22 @@ export default function ContactBody({ locale }: { locale: "es" | "en" }) {
         watch={watch}
         register={register}
         registerName="message"
-        error={errors.message?.message}
+        error={translateError(locale, errors.message?.message as string)}
       />
 
       <input
         type="submit"
-        value={locale === "es" ? "Enviar Mensaje" : "Send Message"}
-        className="bg-platinum-100 hover:bg-white py-3 text-night-800 font-bold text-lg rounded-lg transition-colors duration-200"
+        disabled={isLoading}
+        value={
+          isLoading
+            ? locale === "es"
+              ? "Enviando..."
+              : "Sending..."
+            : locale === "es"
+              ? "Enviar Mensaje"
+              : "Send Message"
+        }
+        className="bg-platinum-100 hover:bg-white/70 hover:backdrop-blur-sm hover:shadow-md py-3 text-night-800 font-bold text-lg rounded-lg transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-400"
       />
     </form>
   );

@@ -1,10 +1,10 @@
 import z from "zod";
 
 export const messageShema = z.object({
-  name: z.string().min(1, "El nombre es requerido"),
-  lastName: z.string().min(1, "El apellido es requerido"),
-  email: z.email({ error: "Coloca un Correo electrónico válido" }),
-  message: z.string().min(1, "El mensaje es requerido"),
+  name: z.string().min(1, "name"),
+  lastName: z.string().min(1, "lastName"),
+  email: z.email({ error: "email" }),
+  message: z.string().min(1, "message"),
 });
 
-export type MessageSchema = z.infer<typeof messageShema>;
+export type TMessage = z.infer<typeof messageShema>;

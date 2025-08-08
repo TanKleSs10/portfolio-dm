@@ -1,36 +1,26 @@
-import { InputLabel } from "@/types";
-
-export const inputLabels: InputLabel[] = [
-  {
-    id: "name",
-    type: "input",
-    nameField: { es: "Nombre", en: "Name" },
-    registerName: "name",
-    group: 1,
+export const errorMessages = {
+  name: {
+    required: {
+      es: "El nombre es requerido",
+      en: "Name is required",
+    },
   },
-  {
-    id: "lastName",
-    type: "input",
-    nameField: { es: "Apellido", en: "Last Name" },
-    registerName: "lastName",
-    group: 1,
+  lastName: {
+    required: {
+      es: "El apellido es requerido",
+      en: "Last name is required",
+    },
   },
-  {
-    id: "email",
-    type: "input",
-    nameField: { es: "Correo Electrónico", en: "Email" },
-    registerName: "email",
-    typeInput: "email",
+  email: {
+    invalid: {
+      es: "Coloca un correo electrónico válido",
+      en: "Please enter a valid email",
+    },
   },
-  {
-    id: "message",
-    type: "textarea",
-    nameField: { es: "Mensaje", en: "Message" },
-    registerName: "message",
+  message: {
+    required: {
+      es: "El mensaje es requerido",
+      en: "Message is required",
+    },
   },
-  {
-    id: "submit",
-    type: "submit",
-    nameField: { es: "Enviar Mensaje", en: "Send Message" },
-  },
-];
+};

@@ -2,11 +2,12 @@ import AboutMeBody from "@/components/aboutMe/AboutMeBody";
 import ContactBody from "@/components/contact/ContactBody";
 import ProjectsBody from "@/components/projects/ProjectsBody";
 import SkillBody from "@/components/skills/skillsBody";
+import { locale } from "@/types";
 
 export const sections = [
   {
     id: "about-me",
-    body: (locale: "es" | "en") => <AboutMeBody locale={locale} />,
+    body: (locale: locale) => <AboutMeBody locale={locale} />,
 
     es: {
       name: "Sobre mí",
@@ -35,7 +36,7 @@ export const sections = [
 
   {
     id: "skills",
-    body: (locale: "es" | "en") => <SkillBody locale={locale} />,
+    body: (locale: locale) => <SkillBody locale={locale} />,
 
     es: {
       name: "Habilidades",
@@ -64,7 +65,7 @@ export const sections = [
 
   {
     id: "projects",
-    body: (locale: "es" | "en") => <ProjectsBody locale={locale} />,
+    body: (locale: locale) => <ProjectsBody locale={locale} />,
 
     es: {
       name: "Proyectos",
@@ -101,7 +102,7 @@ export const sections = [
 
   {
     id: "contact",
-    body: (locale: "es" | "en") => <ContactBody locale={locale} />,
+    body: (locale: locale) => <ContactBody locale={locale} />,
 
     es: {
       name: "Contacto",

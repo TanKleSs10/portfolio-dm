@@ -1,10 +1,11 @@
-import Section from "@/components/Section";
+import Section from "@/components/shared/Section";
 import { sections } from "@/lang/sections";
+import { locale } from "@/types";
 
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: locale }>;
 }) {
   const { locale } = await params;
 
@@ -14,11 +15,11 @@ export default async function Home({
         <Section
           key={section.id}
           id={section.id}
-          sectionName={section[locale as "es" | "en"].name}
-          title={section[locale as "es" | "en"].title}
-          description={section[locale as "es" | "en"].description}
+          sectionName={section[locale].name}
+          title={section[locale].title}
+          description={section[locale].description}
         >
-          {section.body(locale as "es" | "en")}
+          {section.body(locale)}
         </Section>
       ))}
     </>

@@ -5,8 +5,9 @@ import { AnimatePresence, motion } from "motion/react";
 import Button from "./Button";
 import TechnologiesCards from "./TechnologiesCards";
 import { techLabel } from "./technologiesLabels";
+import { locale } from "@/types";
 
-export default function SkillBody({ locale }: { locale: "es" | "en" }) {
+export default function SkillBody({ locale }: { locale: locale }) {
   const [selectedCategory, setSelectedCategory] = useState(1);
 
   return (
