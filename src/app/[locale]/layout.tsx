@@ -73,7 +73,7 @@ export async function generateMetadata({
   return metadataByLocale[locale];
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: Readonly<{
