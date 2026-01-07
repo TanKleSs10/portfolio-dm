@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { locale } from "@/types";
 import ProjectCard from "./ProjectCard";
-import { projects } from "./projects";
+import { projects } from "@/content/projects";
 
 export default function ProjectsBody({ locale }: { locale: locale }) {
   return (

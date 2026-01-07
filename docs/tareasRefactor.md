@@ -14,11 +14,11 @@ Breve: corrige inconsistencias que pueden romper el build y deja una base establ
 
 Breve: separa contenido de presentacion para facilitar migracion a CMS.
 
-- [ ] Definir modelos de contenido para About, Skills, Projects y Contact.
-- [ ] Crear `src/content/` con data local de fallback.
-- [ ] Migrar el copy de `src/lang/sections.tsx` a la capa de contenido.
-- [ ] Migrar los proyectos de `src/components/projects/projects.ts` a `src/content/`.
-- [ ] Ajustar componentes para consumir props tipadas desde la capa de contenido.
+- [x] Definir modelos de contenido para About, Skills, Projects y Contact.
+- [x] Crear `src/content/` con data local de fallback.
+- [x] Migrar el copy de `src/lang/sections.tsx` a la capa de contenido.
+- [x] Migrar los proyectos de `src/components/projects/projects.ts` a `src/content/`.
+- [x] Ajustar componentes para consumir props tipadas desde la capa de contenido.
 
 ## Fase 3 - Capa CMS agnostica
 

@@ -1,6 +1,6 @@
-import { IProject } from "@/types";
+import { ProjectContent } from "./types";
 
-export const projects: IProject[] = [
+export const projects: ProjectContent[] = [
   {
     title: { es: "Cafetería", en: "Coffee Shop" },
     description: {
