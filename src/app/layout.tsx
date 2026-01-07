@@ -13,15 +13,11 @@ const IBMPlexSans = IBM_Plex_Sans({
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params?: { locale?: string };
 }) {
-  const lang = params?.locale ?? "es";
-
   return (
-    <html lang={lang}>
+    <html lang="es">
       <body
         className={`${unbounded.variable} ${IBMPlexSans.variable} antialiased font-ibmPlex text-platinum-100 p-5 relative`}
       >

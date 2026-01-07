@@ -4,11 +4,11 @@
 
 Breve: corrige inconsistencias que pueden romper el build y deja una base estable para refactor.
 
-- [ ] Unificar el layout de App Router para evitar duplicidad de `<html>/<body>`.
-- [ ] Unificar libreria de animaciones y dependencias.
-- [ ] Corregir clases CSS inexistentes en componentes.
-- [ ] Alinear `README.md` con la estructura real del proyecto.
-- [ ] Corregir typos en nombres de archivos clave.
+- [x] Unificar el layout de App Router para evitar duplicidad de `<html>/<body>`.
+- [x] Unificar libreria de animaciones y dependencias.
+- [x] Corregir clases CSS inexistentes en componentes.
+- [x] Alinear `README.md` con la estructura real del proyecto.
+- [x] Corregir typos en nombres de archivos clave.
 
 ## Fase 2 - Desacoplar contenido del UI
 

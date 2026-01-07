@@ -1,4 +1,4 @@
-import { Brain, Folder, Mail, User, UserRoundSearch } from "lucide-react";
+import { Brain, Folder, Mail, User } from "lucide-react";
 
 type TNavOption = {
   label: { en: string; es: string };
