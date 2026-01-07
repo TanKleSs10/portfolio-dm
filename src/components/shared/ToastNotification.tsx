@@ -3,8 +3,8 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ToastNotication() {
+function ToastNotification() {
   return <ToastContainer />;
 }
 
-export default ToastNotication;
+export default ToastNotification;

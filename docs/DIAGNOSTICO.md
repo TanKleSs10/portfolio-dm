@@ -11,7 +11,7 @@ El proyecto usa Next 15 + TypeScript + Tailwind v4. La base es buena, pero hay i
 - Clases inexistentes: `text-on-surface-light` y `text-on-surface-light-variant` se usan en `src/components/projects/ProjectCard.tsx` y `src/components/projects/ProjectTag.tsx`, pero no existen en `src/app/globals.css`.
 - Documentacion desalineada: `README.md` menciona `/pages`, `/styles`, `/data`, pero el proyecto real usa App Router.
 - Prisma y Docker sin uso visible en la UI: `prisma/schema.prisma` y `docker-compose.yml` existen pero no se consumen desde la app.
-- Typos de nombres afectan mantenibilidad: `src/lib/adapters/nodemiler.adapter.ts`, `src/actions/sendToEmailContac.action.ts`, `src/components/shared/ToastNotication.tsx`.
+- Typos de nombres afectan mantenibilidad (corregidos en fase 1): `src/lib/adapters/nodemiler.adapter.ts`, `src/actions/sendToEmailContac.action.ts`, `src/components/shared/ToastNotication.tsx`.
 - Contenido hardcoded: `src/lang/sections.tsx` y `src/components/projects/projects.ts` mezclan contenido y UI, lo que dificulta migrar a CMS.
 - SEO no integrado: `src/components/layout/seo.ts` no parece usado y tiene branding distinto (Quantum MD).
 

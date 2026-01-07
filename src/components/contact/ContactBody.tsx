@@ -6,7 +6,7 @@ import { messageShema, TMessage } from "@/schemas/messageSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { locale } from "@/types";
 import { translateError } from "@/utils";
-import { sendToEmailContact } from "@/actions/sendToEmailContac.action";
+import { sendToEmailContact } from "@/actions/sendToEmailContact.action";
 import { toast } from "react-toastify";
 import { useState } from "react";
 

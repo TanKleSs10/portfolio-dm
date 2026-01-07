@@ -1,6 +1,6 @@
 "use server";
 
-import { sendMail } from "@/lib/adapters/nodemiler.adapter";
+import { sendMail } from "@/lib/adapters/nodemailer.adapter";
 import {
   sendClientEmail,
   sendOwnerEmail,

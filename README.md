@@ -8,7 +8,7 @@ Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en 
 ## 🚀 Tecnologías utilizadas
 
 - **Framework:** [Next.js](https://nextjs.org/) – React para producción con renderizado híbrido (SSR/SSG).
-- **Animaciones:** [Framer Motion](https://www.framer.com/motion/) – Animaciones fluidas y personalizadas.
+- **Animaciones:** [Motion One](https://motion.dev/) – Animaciones fluidas y personalizadas.
 - **Estilos:** [Tailwind CSS](https://tailwindcss.com/) – CSS utilitario para un diseño moderno y responsive.
 - **Despliegue:** [Vercel](https://vercel.com/home)
 
@@ -16,18 +16,18 @@ Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en 
 
 ## 📂 Estructura del proyecto
 
-- `/pages` → Rutas y vistas principales del portafolio.
-- `/components` → Componentes reutilizables como navbar, cards de proyectos, etc.
+- `/src/app` → Rutas y layouts con App Router.
+- `/src/components` → Componentes reutilizables como navbar, cards de proyectos, etc.
+- `/src/lang` → Contenido multilenguaje.
 - `/public` → Archivos estáticos (imágenes, íconos, CV en PDF).
-- `/styles` → Configuración y estilos globales.
-- `/data` → Información de proyectos, skills y links.
+- `/src/app/globals.css` → Configuración y estilos globales.
 
 ---
 
 ## 📄 Características
 
 - **Diseño responsive** adaptable a cualquier dispositivo.
-- **Animaciones suaves** con Framer Motion.
+- **Animaciones suaves** con Motion One.
 - **Sección de proyectos** con enlaces a repositorios y demos.
 - **Descarga de CV** en PDF directamente desde el portafolio.
 - **Optimización SEO** básica para visibilidad en buscadores.
@@ -63,18 +63,18 @@ Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en 
 
 ## 📂 Cómo actualizar tu CV
 
-1. Reemplaza el archivo `cv-diego-meza.pdf` en la carpeta `/public`.
+1. Reemplaza el archivo `DiegoMeza_CV.pdf` en la carpeta `/public`.
 2. Asegúrate de que el enlace o botón en la sección de "Descargar CV" apunte a:
     ```
-    /cv-diego-meza.pdf
+    /DiegoMeza_CV.pdf
     ```
 3. Puedes usar:
     ```jsx
-    <a href="/cv-diego-meza.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
+    <a href="/DiegoMeza_CV.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
     ```
     o  
     ```jsx
-    <a href="/cv-diego-meza.pdf" download>Descargar CV</a>
+    <a href="/DiegoMeza_CV.pdf" download>Descargar CV</a>
     ```
 
 ---

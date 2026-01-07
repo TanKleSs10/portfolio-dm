@@ -10,7 +10,7 @@ export default function ProjectLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-2 text-on-surface-light hover:text-brand-folly transition-colors text-sm"
+      className="flex items-center gap-2 text-platinum-100 hover:text-brand-folly transition-colors text-sm"
     >
       {children}
     </a>

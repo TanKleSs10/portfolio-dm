@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { SquareArrowOutUpRight, Github, ExternalLink } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import Tag from "./ProjectTag";
 import ProjectLink from "./ProjectLink";
@@ -35,14 +35,14 @@ export default function ProjectCard({
         onClick={() => setIsOpen(true)}
       >
         <div className="flex items-center justify-between px-4 py-3">
-          <h2 className="text-on-surface-light text-sm lg:text-lg font-unbounded font-bold">
+          <h2 className="text-platinum-100 text-sm lg:text-lg font-unbounded font-bold">
             {title}
           </h2>
           <a
             href={projectLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-surface-light-variant hover:text-brand-folly transition-colors duration-200"
+            className="text-platinum-200 hover:text-brand-folly transition-colors duration-200"
             aria-label={`Ir al proyecto ${title}`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -90,10 +90,10 @@ export default function ProjectCard({
 
                 {/* Contenido */}
                 <div className="w-full md:w-1/2 p-6 flex flex-col justify-evenly">
-                  <h2 className="text-2xl font-unbounded font-bold text-on-surface-light">
+                  <h2 className="text-2xl font-unbounded font-bold text-platinum-100">
                     {title}
                   </h2>
-                  <p className="text-on-surface-light-variant text-sm">
+                  <p className="text-platinum-200 text-sm">
                     {description}
                   </p>
 

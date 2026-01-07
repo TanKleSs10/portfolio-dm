@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
-import { Unbounded, IBM_Plex_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import { locale } from "@/types";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import NavMobile from "@/components/layout/NavMobile";
-import ToastNotication from "@/components/shared/ToastNotication";
-import "../globals.css";
-
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
-  subsets: ["latin"],
-});
-
-const IBMPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex-sans",
-  subsets: ["latin"],
-});
+import ToastNotification from "@/components/shared/ToastNotification";
 
 const metadataByLocale: Record<locale, Metadata> = {
   es: {
@@ -87,19 +75,15 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale}>
-      <body
-        className={`${unbounded.variable} ${IBMPlexSans.variable} antialiased font-ibmPlex text-platinum-100 p-5 relative`}
-      >
-        <Header locale={locale} />
-        <Sidebar locale={locale} />
-        <NavMobile />
-        <main className="my-5 @container md:w-[calc(100%-340px)] md:ml-[340px] w-full md:mt-26 md:mx-5 space-y-10">
-          {children}
-        </main>
-        <Footer locale={locale} />
-        <ToastNotication />
-      </body>
-    </html>
+    <>
+      <Header locale={locale} />
+      <Sidebar locale={locale} />
+      <NavMobile />
+      <main className="my-5 @container md:w-[calc(100%-340px)] md:ml-[340px] w-full md:mt-26 md:mx-5 space-y-10">
+        {children}
+      </main>
+      <Footer locale={locale} />
+      <ToastNotification />
+    </>
   );
 }
