@@ -3,7 +3,7 @@ import ContactBody from "@/components/contact/ContactBody";
 import ProjectsBody from "@/components/projects/ProjectsBody";
 import SkillBody from "@/components/skills/skillsBody";
 import { sectionsContent } from "@/content/sections";
-import { RichText } from "@/content/types";
+import { RichText } from "@/lib/content/types";
 import { locale } from "@/types";
 
 function renderRichText(segments: RichText) {

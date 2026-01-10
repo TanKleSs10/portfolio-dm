@@ -24,9 +24,9 @@ Breve: separa contenido de presentacion para facilitar migracion a CMS.
 
 Breve: habilita el consumo de datos desde CMS sin acoplar la UI.
 
-- [ ] Crear interfaces de dominio (tipos centrales) para contenido.
-- [ ] Implementar `src/lib/cms/strapiAdapter.ts`.
-- [ ] Implementar selector de fuente (CMS vs fallback local).
+- [x] Crear interfaces de dominio (tipos centrales) para contenido.
+- [x] Implementar `src/lib/cms/strapiAdapter.ts`.
+- [x] Implementar selector de fuente (CMS vs fallback local).
 - [ ] Agregar validaciones basicas para respuestas del CMS.
 
 ## Fase 4 - Integracion Strapi

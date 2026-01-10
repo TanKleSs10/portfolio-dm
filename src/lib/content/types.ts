@@ -17,6 +17,12 @@ export type SectionContent = {
   description: Record<locale, RichText>;
 };
 
+export type HeroContent = {
+  headline: LocalizedText;
+  description: Record<locale, RichText>;
+  location: LocalizedText;
+};
+
 export type ProjectContent = {
   title: LocalizedText;
   description: LocalizedText;
@@ -25,4 +31,9 @@ export type ProjectContent = {
   demoUrl?: string;
   technologies: string[];
   size: "sm" | "md" | "lg";
+};
+
+export type LandingContent = {
+  hero: HeroContent;
+  sections: SectionContent[];
 };

@@ -1,4 +1,4 @@
-import { SectionContent } from "./types";
+import { SectionContent } from "@/lib/content/types";
 
 export const sectionsContent: SectionContent[] = [
   {

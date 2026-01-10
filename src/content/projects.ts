@@ -1,4 +1,4 @@
-import { ProjectContent } from "./types";
+import { ProjectContent } from "@/lib/content/types";
 
 export const projects: ProjectContent[] = [
   {
