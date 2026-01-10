@@ -11,6 +11,7 @@ import {
   StrapiLandingPagesResponse,
   StrapiRichText,
 } from "./strapiTypes";
+import { landingPagesResponseSchema } from "./strapiSchemas";
 
 type LandingEntriesByLocale = Partial<Record<locale, StrapiLandingPageAttributes>>;
 const SUPPORTED_LOCALES: locale[] = ["es", "en"];
@@ -139,7 +140,12 @@ export async function fetchLandingContent(): Promise<LandingContent> {
     },
   );
 
-  return mapLandingResponseToContent(response);
+  const parsed = landingPagesResponseSchema.safeParse(response);
+  if (!parsed.success) {
+    throw new Error("Invalid Strapi landing pages response");
+  }
+
+  return mapLandingResponseToContent(parsed.data);
 }
 
 export function mapLandingPagesResponse(

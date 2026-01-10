@@ -58,7 +58,7 @@ export async function getLandingContent(
       hero: cmsContent.hero ?? emptyHero(),
       sections: cmsContent.sections,
     };
-  } catch (error) {
+  } catch {
     const fallback = localFallbackContent();
     return {
       hero: fallback[lang]?.hero ?? emptyHero(),
