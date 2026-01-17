@@ -5,12 +5,19 @@ import Input from "../shared/Input";
 import { messageShema, TMessage } from "@/schemas/messageSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { locale } from "@/types";
+import { ContactFormContent } from "@/content/types";
 import { translateError } from "@/utils";
 import { sendToEmailContact } from "@/actions/sendToEmailContact.action";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
-export default function ContactBody({ locale }: { locale: locale }) {
+export default function ContactBody({
+  locale,
+  formContent,
+}: {
+  locale: locale;
+  formContent: ContactFormContent;
+}) {
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -71,7 +78,7 @@ export default function ContactBody({ locale }: { locale: locale }) {
       <div className="grid w-full grid-cols-1  md:grid-cols-2 gap-7">
         <Input
           as="input"
-          nameField={locale === "es" ? "Nombre" : "Name"}
+          nameField={formContent.fields.name}
           watch={watch}
           register={register}
           registerName="name"
@@ -79,7 +86,7 @@ export default function ContactBody({ locale }: { locale: locale }) {
         />
         <Input
           as="input"
-          nameField={locale === "es" ? "Apellido" : "Last Name"}
+          nameField={formContent.fields.lastName}
           watch={watch}
           register={register}
           registerName="lastName"
@@ -88,7 +95,7 @@ export default function ContactBody({ locale }: { locale: locale }) {
       </div>
       <Input
         as="input"
-        nameField={locale === "es" ? "Correo Electrónico" : "Email"}
+        nameField={formContent.fields.email}
         watch={watch}
         register={register}
         registerName="email"
@@ -97,7 +104,7 @@ export default function ContactBody({ locale }: { locale: locale }) {
       />
       <Input
         as="textarea"
-        nameField={locale === "es" ? "Mensaje" : "Message"}
+        nameField={formContent.fields.message}
         watch={watch}
         register={register}
         registerName="message"
@@ -107,15 +114,7 @@ export default function ContactBody({ locale }: { locale: locale }) {
       <input
         type="submit"
         disabled={isLoading}
-        value={
-          isLoading
-            ? locale === "es"
-              ? "Enviando..."
-              : "Sending..."
-            : locale === "es"
-              ? "Enviar Mensaje"
-              : "Send Message"
-        }
+        value={isLoading ? formContent.submit.loading : formContent.submit.idle}
         className="bg-platinum-100 hover:bg-white/70 hover:backdrop-blur-sm hover:shadow-md py-3 text-night-800 font-bold text-lg rounded-lg transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-400"
       />
     </form>

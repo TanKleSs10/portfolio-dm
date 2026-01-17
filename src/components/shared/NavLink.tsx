@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 interface NavLinkProps {
-  href: string; // debe ser "#about", "#skills", etc.
+  href: string; // debe ser "#value", "#services", etc.
   children: React.ReactNode;
   active: boolean;
 }

@@ -6,51 +6,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import NavMobile from "@/components/layout/NavMobile";
 import ToastNotification from "@/components/shared/ToastNotification";
-
-const metadataByLocale: Record<locale, Metadata> = {
-  es: {
-    title: "Portafolio - Diego Meza",
-    description:
-      "Desarrollador web Full Stack enfocado en crear experiencias accesibles, eficientes y visualmente impactantes.",
-    keywords: [
-      "portafolio",
-      "desarrollador web",
-      "diseño web",
-      "freelancer",
-      "front-end",
-      "back-end",
-      "astro",
-      "react",
-    ],
-    alternates: {
-      canonical: "https://tusitio.com/es",
-      languages: {
-        en: "https://tusitio.com/en",
-      },
-    },
-  },
-  en: {
-    title: "Diego Meza Portfolio",
-    description:
-      "Full Stack web developer focused on building accessible, efficient, and visually impactful experiences.",
-    keywords: [
-      "portfolio",
-      "web developer",
-      "web design",
-      "freelancer",
-      "front-end",
-      "back-end",
-      "astro",
-      "react",
-    ],
-    alternates: {
-      canonical: "https://tusitio.com/en",
-      languages: {
-        es: "https://tusitio.com/es",
-      },
-    },
-  },
-};
+import { seoContent } from "@/content/seo";
 
 export async function generateMetadata({
   params,
@@ -58,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return metadataByLocale[locale];
+  return seoContent[locale];
 }
 
 export default async function LocaleLayout({

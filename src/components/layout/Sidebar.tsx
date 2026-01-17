@@ -1,15 +1,11 @@
-import {
-  GithubIcon,
-  LinkedinIcon,
-  InstagramIcon,
-  Download,
-} from "lucide-react";
+import { LinkedinIcon, Mail, MessageCircle } from "lucide-react";
 import SocialLink from "../shared/SocialLink";
-import { sidebarTexts } from "@/lang/sidebar";
 import { locale } from "@/types";
+import { getLandingContent } from "@/content";
 
 export default function Sidebar({ locale }: { locale: locale }) {
-  const t = sidebarTexts;
+  const { hero } = getLandingContent(locale);
+  const secondaryLinks = hero.secondaryLinks.filter((link) => link.href);
   return (
     <aside
       className="bg-night-800 p-5 flex flex-col gap-5 rounded-lg md:w-[320px]
@@ -25,36 +21,34 @@ export default function Sidebar({ locale }: { locale: locale }) {
         </h1>
       </figure>
       <h2 className="text-base xs:text-lg font-unbounded font-bold @sm:text-center">
-        {t.heading[locale]}
+        {hero.headline}
       </h2>
       <p className="inline-block xs:text-base max-w-[260px] font-ibmPlex text-platinum-200 @sm:text-center @sm:mx-auto">
-        {t.description[locale]}
+        {hero.subheadline}
       </p>
       <p className="text-base xs:text-lg font-unbounded font-bold @sm:text-center">
-        {t.location[locale]}
+        {hero.location}
       </p>
       <div className="flex gap-5 mx-auto w-fit">
-        <SocialLink href="https://github.com/TanKleSs10">
-          <GithubIcon className="w-6 h-6" />
-        </SocialLink>
-        <SocialLink href="https://www.linkedin.com/in/diego-meza-365489212/">
-          <LinkedinIcon className="w-6 h-6" />
-        </SocialLink>
-
-        <SocialLink href="https://www.instagram.com/the_tankless/">
-          <InstagramIcon className="w-6 h-6" />
-        </SocialLink>
+        {secondaryLinks.map((link) => {
+          const isLinkedIn = link.href.includes("linkedin");
+          const Icon = isLinkedIn ? LinkedinIcon : Mail;
+          return (
+            <SocialLink key={link.href} href={link.href}>
+              <Icon className="w-6 h-6" />
+            </SocialLink>
+          );
+        })}
       </div>
       <a
-        href="/DiegoMeza_CV.pdf"
-        target="_blank"
+        href={hero.primaryCta.href}
         className="w-full group min-h-10 relative flex bg-platinum-300 py-2 font-unbounded font-bold text-night-800 rounded cursor-pointer hover:bg-brand-folly transition-colors duration-300"
       >
         <span className="absolute top-0 translate-y-1/3 left-1/2 -translate-x-1/2 group-hover:translate-x-0 group-hover:left-0 mx-2 transition-all duration-300">
-          {t.viewCV[locale]}
+          {hero.primaryCta.label}
         </span>
-        <Download
-          strokeWidth={3}
+        <MessageCircle
+          strokeWidth={2.5}
           className="absolute top-0 translate-y-1/3 right-1/2 -translate-1/2 opacity-0 group-hover:opacity-100 group-hover:right-0 transition-all duration-300"
         />
       </a>

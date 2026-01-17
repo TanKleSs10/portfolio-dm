@@ -1,36 +1,12 @@
 import Section from "@/components/shared/Section";
-import { sections } from "@/lang/sections";
+import ValueBody from "@/components/landing/ValueBody";
+import ServicesBody from "@/components/landing/ServicesBody";
+import OffersBody from "@/components/landing/OffersBody";
+import CasesBody from "@/components/landing/CasesBody";
+import ProcessBody from "@/components/landing/ProcessBody";
+import FinalCtaBody from "@/components/landing/FinalCtaBody";
 import { locale } from "@/types";
-import { getLandingContent } from "@/lib/content/landingContent";
-import { RichText } from "@/lib/content/types";
-
-function renderRichText(segments: RichText) {
-  return segments.map((segment, index) => {
-    const key = `${segment.type}-${index}`;
-
-    if (segment.type === "break") {
-      return <br key={key} />;
-    }
-
-    if (segment.type === "highlight") {
-      return (
-        <span key={key} className="text-brand-folly">
-          {segment.value}
-        </span>
-      );
-    }
-
-    if (segment.type === "bold") {
-      return (
-        <span key={key} className="font-bold">
-          {segment.value}
-        </span>
-      );
-    }
-
-    return <span key={key}>{segment.value}</span>;
-  });
-}
+import { getLandingContent, sectionOrder } from "@/content";
 
 export default async function Home({
   params,
@@ -39,28 +15,115 @@ export default async function Home({
 }) {
   const { locale } = await params;
 
-  const content = await getLandingContent(locale);
+  const content = getLandingContent(locale);
+  const sectionsById = {
+    value: content.sections.value,
+    services: content.sections.services,
+    offers: content.sections.offers,
+    cases: content.sections.cases,
+    process: content.sections.process,
+    contact: content.sections.finalCta,
+  };
 
   return (
     <>
-      {sections.map((section, index) => {
-        const contentSection = content.sections[index];
-        const title = contentSection
-          ? renderRichText(contentSection.title[locale])
-          : section[locale].title;
-        const description = contentSection
-          ? renderRichText(contentSection.description[locale])
-          : section[locale].description;
+      {sectionOrder.map((sectionId) => {
+        const section = sectionsById[sectionId];
+        if (!section) {
+          return null;
+        }
+
+        if (sectionId === "value") {
+          return (
+            <Section
+              key={section.id}
+              id={section.id}
+              sectionName={section.name}
+              title={section.title}
+              description={section.description}
+            >
+              <ValueBody
+                blocks={section.blocks}
+                workWithLabel={section.qualification.workWithLabel}
+                workWith={section.qualification.workWith}
+                notForLabel={section.qualification.notForLabel}
+                notFor={section.qualification.notFor}
+              />
+            </Section>
+          );
+        }
+
+        if (sectionId === "services") {
+          return (
+            <Section
+              key={section.id}
+              id={section.id}
+              sectionName={section.name}
+              title={section.title}
+              description={section.subtitle}
+            >
+              <ServicesBody items={section.items} note={section.note} />
+            </Section>
+          );
+        }
+
+        if (sectionId === "offers") {
+          return (
+            <Section
+              key={section.id}
+              id={section.id}
+              sectionName={section.name}
+              title={section.title}
+              description={section.description}
+            >
+              <OffersBody cards={section.cards} />
+            </Section>
+          );
+        }
+
+        if (sectionId === "cases") {
+          return (
+            <Section
+              key={section.id}
+              id={section.id}
+              sectionName={section.name}
+              title={section.title}
+              description={section.description}
+            >
+              <CasesBody cards={section.cards} />
+            </Section>
+          );
+        }
+
+        if (sectionId === "process") {
+          return (
+            <Section
+              key={section.id}
+              id={section.id}
+              sectionName={section.name}
+              title={section.title}
+              description={section.approach}
+            >
+              <ProcessBody steps={section.steps} closing={section.closing} />
+            </Section>
+          );
+        }
 
         return (
           <Section
             key={section.id}
             id={section.id}
-            sectionName={contentSection?.name[locale] ?? section[locale].name}
-            title={<>{title}</>}
-            description={<>{description}</>}
+            sectionName={section.name}
+            title={section.title}
+            description={section.description}
           >
-            {section.body(locale)}
+            <FinalCtaBody
+              locale={locale}
+              primaryCta={section.primaryCta}
+              secondaryCta={section.secondaryCta}
+              scheduleEmbedUrl={section.scheduleEmbedUrl}
+              formContent={content.contactForm}
+            />
           </Section>
         );
       })}

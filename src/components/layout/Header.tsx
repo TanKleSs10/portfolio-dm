@@ -12,9 +12,9 @@ export default function Header({ locale }: { locale: locale }) {
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const activeSection = useActiveSection([
-    "about-me",
-    "skills",
-    "projects",
+    "value",
+    "services",
+    "process",
     "contact",
   ]);
 
@@ -34,8 +34,6 @@ export default function Header({ locale }: { locale: locale }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
-
-  useActiveSection(["about-me", "skills", "projects", "contact"]);
 
   return (
     <motion.header

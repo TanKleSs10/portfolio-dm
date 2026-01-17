@@ -1,7 +1,6 @@
-# Portafolio Web – Diego Meza
+# Landing Freelance – Diego Meza
 
-¡Hola! 👋  
-Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en un formato claro y visual.
+Landing enfocada en conseguir proyectos freelance con una estructura clara, CTA directos y contenido centralizado en `src/content`.
 
 ---
 
@@ -17,9 +16,9 @@ Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en 
 ## 📂 Estructura del proyecto
 
 - `/src/app` → Rutas y layouts con App Router.
-- `/src/components` → Componentes reutilizables como navbar, cards de proyectos, etc.
-- `/src/lang` → Contenido multilenguaje.
-- `/public` → Archivos estáticos (imágenes, íconos, CV en PDF).
+- `/src/components` → Componentes reutilizables y secciones de la landing.
+- `/src/content` → Contenido centralizado (ES/EN) y orden de secciones.
+- `/public` → Archivos estáticos (imágenes, íconos).
 - `/src/app/globals.css` → Configuración y estilos globales.
 
 ---
@@ -28,8 +27,9 @@ Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en 
 
 - **Diseño responsive** adaptable a cualquier dispositivo.
 - **Animaciones suaves** con Motion One.
-- **Sección de proyectos** con enlaces a repositorios y demos.
-- **Descarga de CV** en PDF directamente desde el portafolio.
+- **CTA directo a WhatsApp** y agenda integrada con Google Calendar.
+- **Filtro comercial** para calificar leads.
+- **Mini-casos y ofertas** para ayudar a decidir rápido.
 - **Optimización SEO** básica para visibilidad en buscadores.
 
 ---
@@ -61,29 +61,11 @@ Este portafolio está hecho para mostrar mi trabajo, habilidades y proyectos en 
 
 ---
 
-## 📂 Cómo actualizar tu CV
-
-1. Reemplaza el archivo `DiegoMeza_CV.pdf` en la carpeta `/public`.
-2. Asegúrate de que el enlace o botón en la sección de "Descargar CV" apunte a:
-    ```
-    /DiegoMeza_CV.pdf
-    ```
-3. Puedes usar:
-    ```jsx
-    <a href="/DiegoMeza_CV.pdf" target="_blank" rel="noopener noreferrer">Ver CV</a>
-    ```
-    o  
-    ```jsx
-    <a href="/DiegoMeza_CV.pdf" download>Descargar CV</a>
-    ```
-
----
-
 ## 📬 Contacto
 
 - **LinkedIn:** [linkedin.com/in/diegomeza](https://www.linkedin.com/in/diego-meza-365489212/)
-- **GitHub:** [github.com/TanKleSs10](https://github.com/TanKleSs10)
-- **Email:** diegomeza.developer@gmail.com
+- **WhatsApp:** https://wa.me/525613339712
+- **Email:** diegomeza.developer@gmail.com (contacto via formulario)
 
 ---
 
